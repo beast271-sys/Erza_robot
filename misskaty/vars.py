@@ -44,6 +44,7 @@ else:
 # Optional ENV
 LOG_GROUP_ID = environ.get("-1002071541675")
 DATABASE_NAME = environ.get("DATABASE_NAME", "erza")
+USER_SESSION = environ.get("USER_SESSION")
 TZ = environ.get("TZ", "Asia/Jakarta")
 PORT = environ.get("PORT", 80)
 COMMAND_HANDLER = environ.get("COMMAND_HANDLER", "! /").split()
