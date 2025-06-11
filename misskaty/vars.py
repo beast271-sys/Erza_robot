@@ -1,7 +1,3 @@
-# * @author        Yasir Aris M <yasiramunandar@gmail.com>
-# * @date          2023-06-21 22:12:27
-# * @projectName   MissKatyPyro
-# * Copyright ©YasirPedia All rights reserved
 import requests
 import sys
 from logging import getLogger
@@ -22,33 +18,32 @@ if YT_COOKIES := environ.get("YT_COOKIES"):
     else:
         LOGGER.info("Failed download YT Cookies")
 
-if API_ID := environ.get("API_ID", ""):
+if API_ID := environ.get("API_ID", "20433698"):
     API_ID = int(API_ID)
 else:
     LOGGER.error("API_ID variable is missing! Exiting now")
     sys.exit(1)
-API_HASH = environ.get("API_HASH", "")
+API_HASH = environ.get("API_HASH", "2dfd061fd900a52385873e0ccab30032")
 if not API_HASH:
     LOGGER.error("API_HASH variable is missing! Exiting now")
     sys.exit(1)
-BOT_TOKEN = environ.get("BOT_TOKEN", "")
+BOT_TOKEN = environ.get("BOT_TOKEN", "7951809508:AAFWVT9xPq8mJ_fKFWo3xlXp34DO6DVJtS4"")
 if not BOT_TOKEN:
     LOGGER.error("BOT_TOKEN variable is missing! Exiting now")
     sys.exit(1)
-DATABASE_URI = environ.get("DATABASE_URI", "")
+DATABASE_URI = environ.get("DATABASE_URI", "mongodb+srv://hrx:nx@hnx.l8spp2n.mongodb.net/?retryWrites=true&w=majority&appName=hnx")
 if not DATABASE_URI:
     LOGGER.error("DATABASE_URI variable is missing! Exiting now")
     sys.exit(1)
-if LOG_CHANNEL := environ.get("LOG_CHANNEL", ""):
+if LOG_CHANNEL := environ.get("LOG_CHANNEL", "-1002071541675"):
     LOG_CHANNEL = int(LOG_CHANNEL)
 
 else:
     LOGGER.error("LOG_CHANNEL variable is missing! Exiting now")
     sys.exit(1)
 # Optional ENV
-LOG_GROUP_ID = environ.get("LOG_GROUP_ID")
-USER_SESSION = environ.get("USER_SESSION")
-DATABASE_NAME = environ.get("DATABASE_NAME", "MissKatyDB")
+LOG_GROUP_ID = environ.get("-1002071541675")
+DATABASE_NAME = environ.get("DATABASE_NAME", "erza")
 TZ = environ.get("TZ", "Asia/Jakarta")
 PORT = environ.get("PORT", 80)
 COMMAND_HANDLER = environ.get("COMMAND_HANDLER", "! /").split()
@@ -57,12 +52,12 @@ SUDO = list(
         int(x)
         for x in environ.get(
             "SUDO",
-            "617426792 2024984460",
+            "6710921938",
         ).split()
     }
 )
-OWNER_ID = int(environ.get("OWNER_ID", 2024984460))
-SUPPORT_CHAT = environ.get("SUPPORT_CHAT", "YasirPediaChannel")
+OWNER_ID = int(environ.get("OWNER_ID", 6710921938))
+SUPPORT_CHAT = environ.get("SUPPORT_CHAT", "Soldier_071")
 AUTO_RESTART = environ.get("AUTO_RESTART", False)
 OPENAI_KEY = environ.get("OPENAI_KEY")
 GOOGLEAI_KEY = environ.get("GOOGLEAI_KEY")
