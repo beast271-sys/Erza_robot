@@ -487,24 +487,29 @@ async def showid(_, message):
 
 @app.on_message(filters.command(["info"], COMMAND_HANDLER))
 async def who_is(client, message):
-    # https://github.com/SpEcHiDe/PyroGramBot/blob/master/pyrobot/plugins/admemes/whois.py#L19
     if message.sender_chat:
         return await message.reply_msg("Not supported channel..")
+    
     status_message = await message.reply_text("`Fetching user info...`")
     await status_message.edit("`Processing user info...`")
+    
     from_user = None
     from_user_id, _ = extract_user(message)
+    
     try:
         from_user = await client.get_users(from_user_id)
     except Exception as error:
         return await status_message.edit(str(error))
+
     if from_user is None:
         return await status_message.edit("No valid user_id / message specified")
+    
     message_out_str = ""
-    username = f"@{from_user.username}" or "<b>No Username</b>"
+    username = f"@{from_user.username}" if from_user.username else "<b>No Username</b>"
     dc_id = from_user.dc_id or "<i>[User Doesn't Have Profile Pic]</i>"
     bio = (await client.get_chat(from_user.id)).bio
     count_pic = await client.get_chat_photos_count(from_user.id)
+    
     message_out_str += f"<b>🔸 First Name:</b> {from_user.first_name}\n"
     if last_name := from_user.last_name:
         message_out_str += f"<b>🔹 Last Name:</b> {last_name}\n"
@@ -517,46 +522,29 @@ async def who_is(client, message):
     message_out_str += f"<b>🧐 Restricted:</b> {from_user.is_restricted}\n"
     message_out_str += f"<b>✅ Verified:</b> {from_user.is_verified}\n"
     message_out_str += f"<b>🌐 Profile Link:</b> <a href='tg://user?id={from_user.id}'><b>Click Here</b></a>\n"
+
     if message.chat.type.value in (("supergroup", "channel")):
         with contextlib.suppress(UserNotParticipant, ChatAdminRequired):
             chat_member_p = await message.chat.get_member(from_user.id)
             joined_date = chat_member_p.joined_date
-            message_out_str += (
-                "<b>➲Joined this Chat on:</b> <code>" f"{joined_date}" "</code>\n"
+            message_out_str += f"<b>➲Joined this Chat on:</b> <code>{joined_date}</code>\n"
+
+    buttons = [
+        [
+            InlineKeyboardButton(
+                "🔐 Close", callback_data=f"close#{message.from_user.id}"
             )
-    if chat_photo := from_user.photo:
-        local_user_photo = await client.download_media(message=chat_photo.big_file_id)
-        buttons = [
-            [
-                InlineKeyboardButton(
-                    "🔐 Close", callback_data=f"close#{message.from_user.id}"
-                )
-            ]
         ]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await message.reply_photo(
-            photo=local_user_photo,
-            quote=True,
-            reply_markup=reply_markup,
-            caption=message_out_str,
-            disable_notification=True,
-        )
-        os.remove(local_user_photo)
-    else:
-        buttons = [
-            [
-                InlineKeyboardButton(
-                    "🔐 Close", callback_data=f"close#{message.from_user.id}"
-                )
-            ]
-        ]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await message.reply_text(
-            text=message_out_str,
-            reply_markup=reply_markup,
-            quote=True,
-            disable_notification=True,
-        )
+    ]
+    reply_markup = InlineKeyboardMarkup(buttons)
+    
+    await message.reply_text(
+        text=message_out_str,
+        reply_markup=reply_markup,
+        quote=True,
+        disable_notification=True,
+    )
+    
     await status_message.delete_msg()
 
 
