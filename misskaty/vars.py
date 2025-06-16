@@ -44,7 +44,7 @@ else:
 # Optional ENV
 LOG_GROUP_ID = environ.get("-1002071541675")
 DATABASE_NAME = environ.get("DATABASE_NAME", "erza")
-USER_SESSION = environ.get("USER_SESSION")
+USER_SESSION = environ.get("BQE4KIoAusSpKkUDSCEj2z8Lf2ovqOHgEG_FdD32qejk4WGpf__NsJO3LJdHdCQzDa9eFqxQKDCuQtzgS9T_Wj3q8il9tUYEMGqMqBOlcyiS2o1B8HXeb7CX_xdzfxL-vNFpXqbcv3wpOPlQ62Q10lWfTDTW7XPWBWulEvogc2T8_RNQF9pYEwsdoy8XDsFzj_EO6irBIq7WyNu3n4v7jqP-HTS2KP5VEzbEY8L-ZkieDWNhgdlle5qXmm_2E1-UA77ZsoAgy6S_-pfrom49aOuQImhp090vfWTaIMxq5pLdYiojKjaskZqBA7Pxpc-c9DinqPE8xt-J4IYhsGU5QNzAzJ7hkgAAAAHZDnmkAA")
 TZ = environ.get("TZ", "Asia/Jakarta")
 PORT = environ.get("PORT", 80)
 COMMAND_HANDLER = environ.get("COMMAND_HANDLER", "! /").split()
