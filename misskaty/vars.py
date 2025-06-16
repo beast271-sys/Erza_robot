@@ -27,7 +27,7 @@ API_HASH = environ.get("API_HASH", "2dfd061fd900a52385873e0ccab30032")
 if not API_HASH:
     LOGGER.error("API_HASH variable is missing! Exiting now")
     sys.exit(1)
-BOT_TOKEN = environ.get("BOT_TOKEN", "7951809508:AAENenTFG_3K2Dvh9NWzl_89yfaFHQIT4HA")
+BOT_TOKEN = environ.get("BOT_TOKEN", "7951809508:AAHAjM4EIQ4GPEV-ItBU6CDmS8uQYTTbqQw")
 if not BOT_TOKEN:
     LOGGER.error("BOT_TOKEN variable is missing! Exiting now")
     sys.exit(1)
