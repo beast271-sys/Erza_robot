@@ -23,7 +23,7 @@ if API_ID := environ.get("API_ID", "20457610"):
 else:
     LOGGER.error("API_ID variable is missing! Exiting now")
     sys.exit(1)
-API_HASH = environ.get("API_HASH", "b7de0dfecd19375d3f84dbedaeb92537)
+API_HASH = environ.get("API_HASH", "b7de0dfecd19375d3f84dbedaeb92537")
 if not API_HASH:
     LOGGER.error("API_HASH variable is missing! Exiting now")
     sys.exit(1)
