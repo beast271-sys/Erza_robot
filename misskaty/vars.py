@@ -18,12 +18,12 @@ if YT_COOKIES := environ.get("YT_COOKIES"):
     else:
         LOGGER.info("Failed download YT Cookies")
 
-if API_ID := environ.get("API_ID", "20433698"):
+if API_ID := environ.get("API_ID", "20457610"):
     API_ID = int(API_ID)
 else:
     LOGGER.error("API_ID variable is missing! Exiting now")
     sys.exit(1)
-API_HASH = environ.get("API_HASH", "2dfd061fd900a52385873e0ccab30032")
+API_HASH = environ.get("API_HASH", "b7de0dfecd19375d3f84dbedaeb92537)
 if not API_HASH:
     LOGGER.error("API_HASH variable is missing! Exiting now")
     sys.exit(1)
